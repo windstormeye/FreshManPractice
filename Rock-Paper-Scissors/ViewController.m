@@ -162,6 +162,10 @@
     _machineProgressView.progress = 0;
     _ProgressView.progress = 0;
     [_GameBtn setTitle:@"开始" forState:UIControlStateNormal];
+    
+    // 经震栋哥提醒，要把之前的同状态的不同点击事件remove掉，否则点击消息会转发给两个方法
+    [_GameBtn removeTarget:nil action:@selector(restartGame) forControlEvents:UIControlEventTouchUpInside];
+    
     [_GameBtn addTarget:self action:@selector(GameBtnClick) forControlEvents:UIControlEventTouchUpInside];
     _statusLabel.text = @"";
     _statusLabel.textColor = [UIColor blackColor];
